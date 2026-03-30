@@ -37,31 +37,31 @@
     <main>
         <section class="hero section" aria-labelledby="hero-title">
             <div class="container hero__grid">
-                <div>
-                    <h1 id="hero-title" class="display reveal-visible">
-                        Бот, который продаёт 24/7 — <span class="display__accent">пока менеджеры спят</span>
-                    </h1>
-                    <p class="lead reveal-visible">Роб Бот — AI-агент отдела продаж: ловит лиды вне рабочего времени, ведёт диалог как специалист, а команда может вмешаться или скорректировать ответ в любой момент.</p>
-                    <div class="hero__actions reveal-visible">
+                <div class="hero__intro">
+                    <p class="hero__kicker hero__motion hero__motion--1"><span>AI sales</span> · Отдел продаж 24/7</p>
+                    <h1 id="hero-title" class="display hero__motion hero__motion--2">Бот, который продаёт круглосуточно — <span class="display__accent">пока команда отдыхает</span></h1>
+                    <p class="lead hero__motion hero__motion--3">Агент ловит лиды вне смены, ведёт диалог в тоне бренда и передаёт менеджеру контекст — с перехватом и правками в один клик.</p>
+                    <div class="hero__actions hero__motion hero__motion--4">
                         <a href="#demo" class="btn btn--primary btn--lg">Запросить демо за 15 минут</a>
                         <a href="#guide" class="btn btn--ghost btn--lg">Скачать гайд (PDF)</a>
                     </div>
-                    <div class="hero__stats reveal-visible" role="list">
-                        <div role="listitem">
-                            <div class="stat__value">−70%</div>
+                    <div class="hero__stats" role="list">
+                        <div class="hero__stat" role="listitem">
+                            <div class="stat__value"><span class="stat__count" data-count-target="70" data-prefix="−" data-suffix="%">−70%</span></div>
                             <div class="stat__label">Cost per lead</div>
                         </div>
-                        <div role="listitem">
+                        <div class="hero__stat" role="listitem">
                             <div class="stat__value">24/7</div>
                             <div class="stat__label">Без выходных</div>
                         </div>
-                        <div role="listitem">
+                        <div class="hero__stat" role="listitem">
                             <div class="stat__value stat__value--accent">2–3 дня</div>
                             <div class="stat__label">До первого ROI</div>
                         </div>
                     </div>
                 </div>
-                <div class="mock reveal-visible" aria-label="Пример интерфейса диалога">
+                <div class="mock-wrap" data-mock-spotlight>
+                <div class="mock mock--hero hero__motion--mock" aria-label="Пример интерфейса диалога">
                     <div class="mock__bar">
                         <div class="mock__user">
                             <div class="mock__avatar"><i class="fa-solid fa-robot" aria-hidden="true"></i></div>
@@ -88,6 +88,7 @@
                         <p class="mock__crm"><i class="fa-solid fa-database" aria-hidden="true"></i> CRM: бюджет зафиксирован, Lead Score 9/10</p>
                     </div>
                 </div>
+                </div>
             </div>
         </section>
 
@@ -97,7 +98,7 @@
                     <h2 id="pains-title" class="h2">Когда менеджеры спят — деньги уходят конкурентам</h2>
                     <p class="prose prose--wide">Три узких места на этапе масштабирования B2B-продаж.</p>
                 </header>
-                <div class="pains__grid">
+                <div class="pains__grid reveal-stagger">
                     <article class="pain-card pain-card--lead reveal">
                         <span class="pain-card__icon" aria-hidden="true"><i class="fa-regular fa-moon"></i></span>
                         <h3 class="h3">Лид пишет в 23:00 — и больше не ждёт</h3>
@@ -339,7 +340,7 @@
                     <h2 id="pricing-title" class="h2">Тарифы под масштаб</h2>
                     <p class="prose">Фикс за продукт или гибрид за результат — без лишних планов в один ряд.</p>
                 </header>
-                <div class="pricing-grid">
+                <div class="pricing-grid reveal-stagger">
                     <article class="pricing-card pricing-card--featured reveal">
                         <span class="pricing-card__badge">Популярный</span>
                         <div>

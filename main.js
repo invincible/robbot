@@ -56,16 +56,88 @@
           io.unobserve(entry.target);
         });
       },
-      { threshold: 0.15, rootMargin: '0px 0px -5% 0px' }
+      { threshold: 0.12, rootMargin: '0px 0px -5% 0px' }
     );
 
     nodes.forEach((el) => io.observe(el));
+  }
+
+  function initStatCount() {
+    if (prefersReducedMotion) return;
+
+    const el = document.querySelector('[data-count-target]');
+    if (!el) return;
+
+    const target = Number(el.getAttribute('data-count-target'));
+    const prefix = el.getAttribute('data-prefix') || '';
+    const suffix = el.getAttribute('data-suffix') || '';
+    if (Number.isNaN(target)) return;
+
+    const format = (n) => prefix + Math.round(n) + suffix;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          io.unobserve(entry.target);
+          const duration = 720;
+          const start = performance.now();
+
+          function frame(now) {
+            const t = Math.min(1, (now - start) / duration);
+            const eased = 1 - Math.pow(1 - t, 3);
+            el.textContent = format(target * eased);
+            if (t < 1) requestAnimationFrame(frame);
+            else {
+              el.textContent = format(target);
+              el.classList.add('is-done');
+            }
+          }
+          el.textContent = format(0);
+          requestAnimationFrame(frame);
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    io.observe(el);
+  }
+
+  /** Restrained radial highlight following pointer (desktop, no reduced motion). */
+  function initMockSpotlight() {
+    if (prefersReducedMotion) return;
+
+    const wrap = document.querySelector('[data-mock-spotlight]');
+    if (!wrap || window.matchMedia('(max-width: 1023px)').matches) return;
+
+    function setSpot(clientX, clientY) {
+      const r = wrap.getBoundingClientRect();
+      const x = ((clientX - r.left) / Math.max(r.width, 1)) * 100;
+      const y = ((clientY - r.top) / Math.max(r.height, 1)) * 100;
+      wrap.style.setProperty('--spot-x', `${Math.max(0, Math.min(100, x))}%`);
+      wrap.style.setProperty('--spot-y', `${Math.max(0, Math.min(100, y))}%`);
+    }
+
+    wrap.addEventListener(
+      'pointermove',
+      (e) => {
+        setSpot(e.clientX, e.clientY);
+        wrap.classList.add('is-spot-active');
+      },
+      { passive: true }
+    );
+
+    wrap.addEventListener('pointerleave', () => {
+      wrap.classList.remove('is-spot-active');
+    });
   }
 
   function run() {
     initHeaderScroll();
     initNav();
     initReveal();
+    initStatCount();
+    initMockSpotlight();
   }
 
   if (document.readyState === 'loading') {
