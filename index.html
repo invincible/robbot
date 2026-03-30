@@ -1,556 +1,442 @@
 <!DOCTYPE html>
-<html lang="ru" class="scroll-smooth">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Роб Бот — AI-агент отдела продаж 24/7</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="main.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="font-sans text-slate-800 antialiased bg-slate-50 selection:bg-brand-500 selection:text-white">
-    <div id="guide" class="h-0 w-0 overflow-hidden pointer-events-none" aria-hidden="true"></div>
+<body>
+    <div id="guide" class="visually-hidden" aria-hidden="true"></div>
 
-    <!-- НАВИГАЦИЯ -->
-    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white">
-                    <i class="fa-solid fa-robot"></i>
-                </div>
-                <span class="font-bold text-xl tracking-tight">Роб Бот</span>
-            </div>
-            <div class="hidden md:flex gap-8 text-sm font-semibold text-slate-600">
-                <a href="#how" class="hover:text-brand-600 transition">Как работает</a>
-                <a href="#hitl" class="hover:text-brand-600 transition">Контроль</a>
-                <a href="#rag" class="hover:text-brand-600 transition">Умная база</a>
-                <a href="#roi" class="hover:text-brand-600 transition">ROI</a>
-                <a href="#pricing" class="hover:text-brand-600 transition">Тарифы</a>
-            </div>
-            <a href="#demo" class="bg-brand-600 hover:bg-brand-700 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition shadow-sm">
-                Запросить демо
+    <header class="site-header" id="top">
+        <div class="container site-header__inner">
+            <a href="#top" class="logo">
+                <span class="logo__mark" aria-hidden="true"><i class="fa-solid fa-robot"></i></span>
+                Роб Бот
             </a>
+            <button type="button" class="site-header__toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Открыть меню">
+                <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            </button>
+            <nav id="site-nav" class="site-header__nav" aria-label="Основная навигация">
+                <a href="#how">Как работает</a>
+                <a href="#hitl">Контроль</a>
+                <a href="#rag">Умная база</a>
+                <a href="#roi">ROI</a>
+                <a href="#pricing">Тарифы</a>
+                <a href="#demo" class="btn btn--primary site-header__cta site-header__cta--mobile">Запросить демо</a>
+            </nav>
+            <a href="#demo" class="btn btn--primary site-header__cta">Запросить демо</a>
         </div>
-    </nav>
+    </header>
 
-    <!-- 1. HERO БЛОК -->
-    <section class="bg-slate-900 text-white pt-20 pb-24 lg:pt-32 lg:pb-36 overflow-hidden relative">
-        <!-- Декоративное свечение -->
-        <div class="absolute top-0 right-0 -translate-y-12 translate-x-1/3 w-96 h-96 bg-brand-500/20 rounded-full blur-3xl"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-16 relative z-10">
-            <div class="flex-1 space-y-8 reveal visible">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
-                    Бот, который продаёт 24/7 — <br>
-                    <span class="bg-gradient-to-r from-brand-400 via-cyan-300 to-blue-300 gradient-text">пока ваши менеджеры спят</span>
-                </h1>
-                <p class="text-lg text-slate-300 max-w-2xl leading-relaxed">
-                    Роб Бот — AI-агент отдела продаж, который ловит лиды в нерабочее время, общается как профессионал, а ваши менеджеры могут в любой момент вмешаться или скорректировать диалог прямо во время беседы.
-                </p>
-                
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 border-y border-slate-700/50 py-6">
-                    <div class="stat-pop" style="animation-delay: 0.05s;">
-                        <div class="text-3xl font-bold text-white mb-1">-70%</div>
-                        <div class="text-sm text-slate-400 font-medium">Cost/Lead</div>
+    <main>
+        <section class="hero section" aria-labelledby="hero-title">
+            <div class="container hero__grid">
+                <div>
+                    <h1 id="hero-title" class="display reveal-visible">
+                        Бот, который продаёт 24/7 — <span class="display__accent">пока менеджеры спят</span>
+                    </h1>
+                    <p class="lead reveal-visible">Роб Бот — AI-агент отдела продаж: ловит лиды вне рабочего времени, ведёт диалог как специалист, а команда может вмешаться или скорректировать ответ в любой момент.</p>
+                    <div class="hero__actions reveal-visible">
+                        <a href="#demo" class="btn btn--primary btn--lg">Запросить демо за 15 минут</a>
+                        <a href="#guide" class="btn btn--ghost btn--lg">Скачать гайд (PDF)</a>
                     </div>
-                    <div class="stat-pop" style="animation-delay: 0.18s;">
-                        <div class="text-3xl font-bold text-white mb-1">24/7</div>
-                        <div class="text-sm text-slate-400 font-medium">Без выходных</div>
-                    </div>
-                    <div class="stat-pop" style="animation-delay: 0.3s;">
-                        <div class="text-3xl font-bold text-brand-400 mb-1">2–3 дня</div>
-                        <div class="text-sm text-slate-400 font-medium">Быстрый ROI</div>
+                    <div class="hero__stats reveal-visible" role="list">
+                        <div role="listitem">
+                            <div class="stat__value">−70%</div>
+                            <div class="stat__label">Cost per lead</div>
+                        </div>
+                        <div role="listitem">
+                            <div class="stat__value">24/7</div>
+                            <div class="stat__label">Без выходных</div>
+                        </div>
+                        <div role="listitem">
+                            <div class="stat__value stat__value--accent">2–3 дня</div>
+                            <div class="stat__label">До первого ROI</div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#demo" class="bg-brand-600 hover:bg-brand-500 text-white px-8 py-4 rounded-xl font-bold text-center transition flex items-center justify-center gap-2 shadow-lg shadow-brand-500/20 cta-glow">
-                        <i class="fa-solid fa-rocket"></i> Запросить демо за 15 минут
-                    </a>
-                    <a href="#guide" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white px-8 py-4 rounded-xl font-semibold text-center transition flex items-center justify-center gap-2">
-                        Скачать гайд (PDF)
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Мокап интерфейса -->
-            <div class="flex-1 w-full max-w-lg lg:max-w-none reveal visible" style="animation-delay: 0.12s">
-                <div class="bg-slate-800 rounded-2xl border border-slate-700 shadow-2xl overflow-hidden flex flex-col h-[500px] float-card">
-                    <div class="bg-slate-900 border-b border-slate-700 p-4 flex justify-between items-center">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-brand-600 rounded-full flex items-center justify-center text-white"><i class="fa-solid fa-robot"></i></div>
+                <div class="mock reveal-visible" aria-label="Пример интерфейса диалога">
+                    <div class="mock__bar">
+                        <div class="mock__user">
+                            <div class="mock__avatar"><i class="fa-solid fa-robot" aria-hidden="true"></i></div>
                             <div>
-                                <div class="font-bold text-sm">Роб Бот</div>
-                                <div class="text-xs text-green-400 flex items-center gap-1"><span class="w-2 h-2 bg-green-400 rounded-full inline-block pulse-dot"></span> Анализирует лид</div>
+                                <div class="mock__name">Роб Бот</div>
+                                <div class="mock__status"><span class="status-dot" aria-hidden="true"></span> Анализирует лид</div>
                             </div>
                         </div>
-                        <button class="bg-accent-500 hover:bg-accent-600 text-white text-xs font-bold px-4 py-2 rounded-lg flex items-center gap-2 transition shadow-lg shadow-accent-500/30">
-                            <i class="fa-solid fa-hand-paper"></i> Перехватить
-                        </button>
+                        <button type="button" class="mock__btn">Перехватить</button>
                     </div>
-                    <div class="flex-1 p-5 space-y-5 overflow-y-auto bg-slate-800/50">
-                        <div class="flex gap-3 max-w-[85%]">
-                            <div class="w-8 h-8 rounded-full bg-slate-600 flex-shrink-0 flex items-center justify-center text-xs font-bold">К</div>
-                            <div class="bg-slate-700 p-3.5 rounded-2xl rounded-tl-none text-sm text-slate-200 shadow-sm">
-                                Привет, нам нужна система для 50+ человек. Какие у вас условия и сроки внедрения?
-                            </div>
+                    <div class="mock__thread">
+                        <div class="bubble">
+                            <div class="bubble__avatar" aria-hidden="true">К</div>
+                            <div class="bubble__text">Нужна система на 50+ человек. Условия и сроки внедрения?</div>
                         </div>
-                        <div class="flex gap-3 max-w-[85%] ml-auto flex-row-reverse">
-                            <div class="w-8 h-8 rounded-full bg-brand-600 flex-shrink-0 flex items-center justify-center text-xs"><i class="fa-solid fa-robot text-white"></i></div>
-                            <div class="bg-brand-600 p-3.5 rounded-2xl rounded-tr-none text-sm text-white shadow-sm">
-                                Здравствуйте! Для компании 50+ человек идеально подойдёт тариф Enterprise. Внедрение занимает 2-3 дня. При оплате за год мы даём скидку 20%. Хотите, я забронирую звонок с нашим техдиректором на завтра?
-                            </div>
+                        <div class="bubble bubble--out">
+                            <div class="bubble__avatar bubble__avatar--bot"><i class="fa-solid fa-robot" aria-hidden="true"></i></div>
+                            <div class="bubble__text">Для 50+ подойдёт Enterprise. Внедрение 2–3 дня. При оплате за год — скидка 20%. Забронировать звонок с техдиректором на завтра?</div>
                         </div>
-                        <div class="flex gap-3 max-w-[55%] ml-auto flex-row-reverse">
-                            <div class="w-8 h-8 rounded-full bg-brand-600/80 flex-shrink-0 flex items-center justify-center text-xs"><i class="fa-solid fa-robot text-white"></i></div>
-                            <div class="bg-slate-700 p-3 rounded-2xl rounded-tr-none text-sm text-white shadow-sm flex items-center gap-1.5">
-                                <span class="w-2 h-2 bg-slate-300 rounded-full typing-dot"></span>
-                                <span class="w-2 h-2 bg-slate-300 rounded-full typing-dot"></span>
-                                <span class="w-2 h-2 bg-slate-300 rounded-full typing-dot"></span>
-                            </div>
+                        <div class="bubble bubble--out">
+                            <div class="bubble__avatar bubble__avatar--bot"><i class="fa-solid fa-robot" aria-hidden="true"></i></div>
+                            <div class="bubble__text typing" aria-label="Печатает"><span></span><span></span><span></span></div>
                         </div>
-                        <!-- Уведомление CRM -->
-                        <div class="mx-auto bg-slate-900/80 border border-slate-700 rounded-lg p-2 text-xs text-center text-slate-400 max-w-[80%] mt-4">
-                            <i class="fa-solid fa-bolt text-yellow-500 mr-1"></i> CRM обновлена: Бюджет определен, Lead Score: 9/10 🔥
-                        </div>
+                        <p class="mock__crm"><i class="fa-solid fa-database" aria-hidden="true"></i> CRM: бюджет зафиксирован, Lead Score 9/10</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 2. БЛОК БОЛЕЙ (JTBD) -->
-    <section class="py-24 bg-white" id="pains">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-                <h2 class="text-3xl md:text-4xl font-extrabold mb-5 text-slate-900">Когда менеджеры спят — деньги уходят конкурентам</h2>
-                <p class="text-lg text-slate-600">Три проблемы, которые убивают стартапы на этапе масштабирования:</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Боль 1 -->
-                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-md transition duration-300 relative overflow-hidden group reveal">
-                    <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
-                        <i class="fa-regular fa-moon"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Лид звонит в 23:00 — и больше вас не ждёт</h3>
-                    <p class="text-slate-600 mb-6 text-sm leading-relaxed">40% B2B лидов требуют ответа в течение 5 минут. После 23:00 ваш ответ обычно значит одно: конкурент уже ответил и клиент с ним.</p>
-                    <div class="bg-red-50 text-red-700 p-3 rounded-lg text-sm font-semibold border border-red-100 flex items-center gap-2">
-                        <i class="fa-solid fa-arrow-trend-down"></i> Потеря: $5–50K упущенного дохода
-                    </div>
-                </div>
-                <!-- Боль 2 -->
-                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-md transition duration-300 group reveal" style="animation-delay: 0.12s">
-                    <div class="w-14 h-14 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
-                        <i class="fa-solid fa-hourglass-half"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">80% времени уходит на квалификацию</h3>
-                    <p class="text-slate-600 mb-6 text-sm leading-relaxed">В среднем SDR/BDR тратит 2–3 часа в день на тупые рутинные звонки. Менеджер должен закрывать сделки, а не задавать вопросы по скрипту.</p>
-                    <div class="bg-orange-50 text-orange-700 p-3 rounded-lg text-sm font-semibold border border-orange-100 flex items-center gap-2">
-                        <i class="fa-solid fa-user-minus"></i> Затраты: +$80–150K на найм новых людей
-                    </div>
-                </div>
-                <!-- Боль 3 -->
-                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-md transition duration-300 group reveal" style="animation-delay: 0.24s">
-                    <div class="w-14 h-14 bg-rose-100 text-rose-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
-                        <i class="fa-solid fa-filter-circle-xmark"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Слив бюджета на неквалифицированные лиды</h3>
-                    <p class="text-slate-600 mb-6 text-sm leading-relaxed">Средняя воронка B2B SaaS теряет 35–40% лидов на квалификации. Это значит, что твой маркетинг работает впустую.</p>
-                    <div class="bg-rose-50 text-rose-700 p-3 rounded-lg text-sm font-semibold border border-rose-100 flex items-center gap-2">
-                        <i class="fa-solid fa-money-bill-wave"></i> Слив: ~40% маркетингового бюджета
-                    </div>
+        <section class="section section--surface" id="pains" aria-labelledby="pains-title">
+            <div class="container">
+                <header class="section-head reveal">
+                    <h2 id="pains-title" class="h2">Когда менеджеры спят — деньги уходят конкурентам</h2>
+                    <p class="prose prose--wide">Три узких места на этапе масштабирования B2B-продаж.</p>
+                </header>
+                <div class="pains__grid">
+                    <article class="pain-card pain-card--lead reveal">
+                        <span class="pain-card__icon" aria-hidden="true"><i class="fa-regular fa-moon"></i></span>
+                        <h3 class="h3">Лид пишет в 23:00 — и больше не ждёт</h3>
+                        <p class="text-small" style="color: var(--text-muted); line-height: var(--leading-body); margin: 0;">Большая часть B2B-лидов ожидает ответа в первые минуты. Ночью ответ конкурента часто значит потерянную сделку.</p>
+                        <p class="pain-card__tag">Потеря: $5–50K упущенного дохода</p>
+                    </article>
+                    <article class="pain-card reveal">
+                        <span class="pain-card__icon" aria-hidden="true"><i class="fa-solid fa-hourglass-half"></i></span>
+                        <h3 class="h3">Время уходит на квалификацию</h3>
+                        <p class="text-small" style="color: var(--text-muted); line-height: var(--leading-body); margin: 0;">SDR тратят часы на однотипные вопросы. Менеджерам нужно закрывать, а не читать скрипт.</p>
+                        <p class="pain-card__tag">+ $80–150K на расширение штата</p>
+                    </article>
+                    <article class="pain-card reveal">
+                        <span class="pain-card__icon" aria-hidden="true"><i class="fa-solid fa-filter-circle-xmark"></i></span>
+                        <h3 class="h3">Бюджет на лиды без квалификации</h3>
+                        <p class="text-small" style="color: var(--text-muted); line-height: var(--leading-body); margin: 0;">До 40% лидов отваливается на этапе квалификации — маркетинг работает вхолостую.</p>
+                        <p class="pain-card__tag">~40% маркетингового бюджета</p>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 3. СОЦИАЛЬНОЕ ДОКАЗАТЕЛЬСТВО -->
-    <section class="py-12 border-y border-slate-200 bg-white" id="roi">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-center text-2xl font-bold text-slate-800 mb-8">Уже 150+ компаний экономят 70% на обработке лидов</h2>
-            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale mb-8">
-                <!-- Логотипы (заглушки) -->
-                <div class="text-xl font-black tracking-tighter">ACME Corp</div>
-                <div class="text-xl font-bold font-serif">TechFlow</div>
-                <div class="text-xl font-black italic">SaaSify</div>
-                <div class="text-xl font-bold uppercase tracking-widest">GlobalIt</div>
-                <div class="text-xl font-semibold">FinStart</div>
-            </div>
-            <div class="flex justify-center gap-8 text-sm font-medium text-slate-600">
-                <div class="flex items-center gap-2"><i class="fa-solid fa-star text-yellow-400"></i> 4.9 рейтинг на G2</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-chart-line text-brand-500"></i> 2,400+ лидов в месяц</div>
-                <div class="flex items-center gap-2"><i class="fa-solid fa-bullseye text-green-500"></i> Средний ROI: день 2–3</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. КАК ЭТО РАБОТАЕТ -->
-    <section class="py-24 bg-slate-50" id="how">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-                <h2 class="text-3xl md:text-4xl font-extrabold mb-5 text-slate-900">Всё просто. Три этапа вместо сложных интеграций.</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Шаг 1 -->
-                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative reveal">
-                    <div class="absolute -top-5 left-8 w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold text-lg border-4 border-slate-50">1</div>
-                    <h3 class="text-xl font-bold mt-2 mb-4">Лид входит</h3>
-                    <p class="text-slate-600 text-sm">Клиент заполняет форму на сайте, звонит по номеру или пишет в WhatsApp. Роб Бот моментально его видит (< 1 сек) и начинает диалог.</p>
+        <section class="section section--tight section--surface-2" id="roi" aria-labelledby="roi-title">
+            <div class="container">
+                <div class="roi__top">
+                    <h2 id="roi-title" class="h2 reveal" style="margin: 0; max-width: 20ch;">150+ компаний снижают стоимость лида до 70%</h2>
+                    <div class="roi__logos reveal" aria-hidden="true">
+                        <span class="roi__logo">ACME Corp</span>
+                        <span class="roi__logo">TechFlow</span>
+                        <span class="roi__logo">SaaSify</span>
+                        <span class="roi__logo">GlobalIt</span>
+                        <span class="roi__logo">FinStart</span>
+                    </div>
                 </div>
-                <!-- Шаг 2 -->
-                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative reveal" style="animation-delay: 0.12s">
-                    <div class="absolute -top-5 left-8 w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold text-lg border-4 border-slate-50">2</div>
-                    <h3 class="text-xl font-bold mt-2 mb-4">Бот квалифицирует</h3>
-                    <p class="text-slate-600 text-sm">Бот узнаёт: бюджет, сроки, боли. Менеджер видит всё в CRM в реальном времени и может нажать "Перехватить" в любой момент.</p>
-                </div>
-                <!-- Шаг 3 -->
-                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm relative reveal" style="animation-delay: 0.24s">
-                    <div class="absolute -top-5 left-8 w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold text-lg border-4 border-slate-50">3</div>
-                    <h3 class="text-xl font-bold mt-2 mb-4">Готовая сделка</h3>
-                    <p class="text-slate-600 text-sm">Квалифицированный лид + все данные в CRM (готово к звонку). Либо встреча бронируется в календарь автоматом (для скора 8+).</p>
+                <div class="roi__metrics reveal">
+                    <span><i class="fa-solid fa-star" aria-hidden="true"></i>4.9 на G2</span>
+                    <span><i class="fa-solid fa-chart-line" aria-hidden="true"></i>2 400+ лидов в месяц</span>
+                    <span><i class="fa-solid fa-bullseye" aria-hidden="true"></i>ROI в среднем на 2–3-й день</span>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 5. HUMAN IN THE LOOP (Уникальность 1) -->
-    <section class="py-24 bg-white" id="hitl">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row gap-16 items-center">
-                <div class="flex-1 space-y-6 reveal">
-                    <div class="inline-block bg-brand-100 text-brand-700 font-bold px-3 py-1 rounded-full text-xs tracking-wider mb-2">УНИКАЛЬНОСТЬ #1</div>
-                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight">Бот — это твой помощник, а не робот без контроля</h2>
-                    <p class="text-lg text-slate-600">Живой менеджер видит каждый диалог. Может вмешаться за 1 клик или скорректировать поведение бота прямо во время разговора.</p>
-                    
-                    <ul class="space-y-4 mt-8">
-                        <li class="flex gap-4 items-start">
-                            <div class="w-8 h-8 rounded-full bg-accent-100 text-accent-600 flex items-center justify-center flex-shrink-0 mt-1"><i class="fa-solid fa-hand"></i></div>
+        <section class="section" id="how" aria-labelledby="how-title">
+            <div class="container">
+                <header class="section-head reveal">
+                    <h2 id="how-title" class="h2">Три шага вместо долгих интеграций</h2>
+                    <p class="prose">От первого касания до готовой карточки в CRM — без лишней суеты.</p>
+                </header>
+                <div class="steps">
+                    <div class="step reveal">
+                        <div class="step__num">01</div>
+                        <h3 class="step__title">Лид входит</h3>
+                        <p class="step__text">Форма, звонок или мессенджер — бот подхватывает за секунду и начинает диалог.</p>
+                    </div>
+                    <div class="step reveal">
+                        <div class="step__num">02</div>
+                        <h3 class="step__title">Квалификация</h3>
+                        <p class="step__text">Бюджет, сроки, боль — в CRM в реальном времени. Перехват в один клик.</p>
+                    </div>
+                    <div class="step reveal">
+                        <div class="step__num">03</div>
+                        <h3 class="step__title">Готово к сделке</h3>
+                        <p class="step__text">Лид с полями и скором. При высоком score — слот в календаре автоматически.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--surface" id="hitl" aria-labelledby="hitl-title">
+            <div class="container split">
+                <div class="reveal">
+                    <p class="eyebrow">Контроль</p>
+                    <h2 id="hitl-title" class="h2">Помощник с полным контролем, а не чёрный ящик</h2>
+                    <p class="lead" style="max-width: 42ch;">Менеджер видит диалог, может перехватить или подправить поведение бота без остановки разговора.</p>
+                    <ul class="feature-list">
+                        <li>
+                            <span class="feature-list__marker" aria-hidden="true"><i class="fa-solid fa-hand"></i></span>
                             <div>
-                                <h4 class="font-bold text-slate-900">Мгновенный перехват (Live Interception)</h4>
-                                <p class="text-sm text-slate-600 mt-1">Клиент говорит что-то сложное? Менеджер нажимает красную кнопку "Перехватить". Бот отключается, менеджер плавно продолжает диалог.</p>
+                                <h4>Перехват в реальном времени</h4>
+                                <p>Сложный запрос — кнопка «Перехватить»: бот уступает линию, менеджер продолжает без рывка.</p>
                             </div>
                         </li>
-                        <li class="flex gap-4 items-start">
-                            <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center flex-shrink-0 mt-1"><i class="fa-solid fa-pen-to-square"></i></div>
+                        <li>
+                            <span class="feature-list__marker" aria-hidden="true"><i class="fa-solid fa-pen-to-square"></i></span>
                             <div>
-                                <h4 class="font-bold text-slate-900">Настройка промпта на лету</h4>
-                                <p class="text-sm text-slate-600 mt-1">Видите, что бот пошел не туда? Измените системный промпт в 1 клик прямо во время разговора. Следующий ответ бота будет идеальным.</p>
+                                <h4>Промпт на лету</h4>
+                                <p>Корректировка системного промпта во время чата — следующий ответ уже с учётом правки.</p>
                             </div>
                         </li>
-                        <li class="flex gap-4 items-start">
-                            <div class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center flex-shrink-0 mt-1"><i class="fa-solid fa-clipboard-check"></i></div>
+                        <li>
+                            <span class="feature-list__marker" aria-hidden="true"><i class="fa-solid fa-clipboard-check"></i></span>
                             <div>
-                                <h4 class="font-bold text-slate-900">Контроль качества (QA Post-Chat)</h4>
-                                <p class="text-sm text-slate-600 mt-1">После диалога: редактируйте поля в CRM, оставляйте комментарии боту ("В следующий раз спроси о..."). Бот обучается с каждым лидом.</p>
+                                <h4>QA после диалога</h4>
+                                <p>Правки в CRM и заметки боту обучают модель на каждом лиде.</p>
                             </div>
                         </li>
                     </ul>
                 </div>
-                
-                <div class="flex-1 w-full bg-slate-50 p-8 rounded-3xl border border-slate-200 reveal" style="animation-delay: 0.14s">
-                    <div class="text-center font-mono text-sm font-bold text-slate-500 mb-6">СХЕМА РАБОТЫ</div>
-                    <div class="flex flex-col gap-4 relative">
-                        <!-- Линии связи -->
-                        <div class="absolute left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 -translate-x-1/2 z-0"></div>
-                        
-                        <div class="bg-white border border-slate-200 p-4 rounded-xl shadow-sm text-center relative z-10 w-2/3 mx-auto">
-                            <div class="font-bold text-brand-600"><i class="fa-solid fa-user-tie mr-2"></i>Ваш Менеджер</div>
+                <div class="diagram reveal">
+                    <p class="diagram__label">Схема</p>
+                    <div class="diagram__flow">
+                        <div class="diagram__node"><i class="fa-solid fa-user-tie" aria-hidden="true"></i> Ваш менеджер</div>
+                        <div class="diagram__pills">
+                            <span class="diagram__pill">Наблюдает</span>
+                            <span class="diagram__pill">Корректирует</span>
                         </div>
-                        
-                        <div class="flex justify-center gap-2 relative z-10">
-                            <div class="bg-accent-50 text-accent-600 border border-accent-200 px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap"><i class="fa-solid fa-eye mr-1"></i> Наблюдает</div>
-                            <div class="bg-brand-50 text-brand-600 border border-brand-200 px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap"><i class="fa-solid fa-bolt mr-1"></i> Контролирует</div>
+                        <div class="diagram__node diagram__node--accent">
+                            <strong><i class="fa-solid fa-robot" aria-hidden="true"></i> Роб Бот</strong><br>
+                            <span class="text-small" style="margin-top: var(--space-2); display: inline-block;">Первичный диалог</span>
                         </div>
-                        
-                        <div class="bg-slate-900 text-white border border-slate-800 p-5 rounded-xl shadow-lg text-center relative z-10 w-full transform scale-105">
-                            <div class="font-bold text-lg"><i class="fa-solid fa-robot text-brand-400 mr-2"></i>Роб Бот</div>
-                            <div class="text-xs text-slate-400 mt-1">Ведёт первичный диалог</div>
-                        </div>
-                        
-                        <div class="flex justify-center relative z-10 my-2 text-slate-300">
-                            <i class="fa-solid fa-arrow-right-arrow-left fa-rotate-90 text-xl"></i>
-                        </div>
-                        
-                        <div class="bg-white border border-slate-200 p-4 rounded-xl shadow-sm text-center relative z-10 w-2/3 mx-auto">
-                            <div class="font-bold text-slate-700"><i class="fa-solid fa-user mr-2"></i>Клиент</div>
-                        </div>
+                        <span class="diagram__arrow" aria-hidden="true"><i class="fa-solid fa-arrow-down-long"></i></span>
+                        <div class="diagram__node"><i class="fa-solid fa-user" aria-hidden="true"></i> Клиент</div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 6. RAG + CRM (Уникальность 2) -->
-    <section class="py-24 bg-slate-900 text-white" id="rag">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <div class="inline-block bg-brand-500/20 text-brand-300 font-bold px-3 py-1 rounded-full text-xs tracking-wider mb-4 border border-brand-500/30">УНИКАЛЬНОСТЬ #2</div>
-                <h2 class="text-3xl md:text-4xl font-extrabold mb-5 leading-tight">Роб Бот знает всё о вашем бизнесе.<br>Это не ChatGPT, это — <span class="text-brand-400">ваш бизнес</span>.</h2>
-                <p class="text-lg text-slate-400">Бот подключается к вашей базе знаний (RAG) и автоматически заполняет CRM.</p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <!-- RAG Часть -->
-                <div class="space-y-6 reveal">
-                    <h3 class="text-2xl font-bold border-b border-slate-700 pb-4 flex items-center gap-3">
-                        <i class="fa-solid fa-database text-brand-500"></i> База знаний (RAG)
-                    </h3>
-                    <p class="text-slate-400 text-sm">Бот использует прайс-листы, регламенты, FAQ и историю сделок в реальном времени.</p>
-                    
-                    <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700">
-                        <div class="text-sm font-bold text-slate-300 mb-3 uppercase tracking-wider text-xs">Пример: Проверка остатков</div>
-                        <div class="space-y-3">
-                            <div class="text-sm text-slate-300"><span class="font-bold text-white">Клиент:</span> "Нужен Widget-X в количестве 1000 шт к пятнице"</div>
-                            <div class="bg-brand-900/50 border border-brand-500/30 p-3 rounded-lg text-sm text-brand-100">
-                                <span class="font-bold text-brand-400">✅ Роб Бот:</span> "В наличии 2500 Widget-X на московском складе. Отгружаем за 24 часа. Пятница — закончим на 100%."
-                            </div>
-                            <div class="bg-slate-800 p-3 rounded-lg text-sm text-slate-400 border border-slate-700">
-                                <span class="font-bold text-slate-500">❌ Обычный ИИ:</span> "Я не знаю ваших остатков, обратитесь к менеджеру"
-                            </div>
+        <section class="section section--surface-2" id="rag" aria-labelledby="rag-title">
+            <div class="container">
+                <div class="rag-intro reveal">
+                    <p class="eyebrow">База знаний</p>
+                    <h2 id="rag-title" class="h2">Не общий ChatGPT — ваш каталог, регламенты и CRM</h2>
+                    <p class="prose prose--wide">RAG по вашим документам и автозаполнение карточки после диалога.</p>
+                </div>
+                <div class="rag-grid">
+                    <div class="reveal">
+                        <h3 class="rag-block__title"><i class="fa-solid fa-database" aria-hidden="true"></i> База знаний (RAG)</h3>
+                        <p class="text-small" style="color: var(--text-muted); margin: 0 0 var(--space-6); line-height: var(--leading-body);">Прайсы, FAQ, регламенты и контекст сделок — в ответах бота.</p>
+                        <div class="example-box">
+                            <p class="example-box__label">Остатки на складе</p>
+                            <p class="example-line"><strong>Клиент:</strong> Widget-X, 1000 шт к пятнице.</p>
+                            <p class="reply reply--good"><strong>Роб Бот:</strong> На Москве 2500 шт, отгрузка за 24 ч. К пятнице успеваем.</p>
+                            <p class="reply reply--bad"><strong>Обычный ИИ:</strong> Нет доступа к остаткам — уточните у менеджера.</p>
                         </div>
                     </div>
-                </div>
-
-                                <!-- CRM Часть -->
-                <div class="space-y-6 reveal" style="animation-delay: 0.15s">
-                    <h3 class="text-2xl font-bold border-b border-slate-700 pb-4 flex items-center gap-3">
-                        <i class="fa-solid fa-table-list text-green-500"></i> Авто-CRM
-                    </h3>
-                    <p class="text-slate-400 text-sm">После диалога бот сам заполняет карточку лида. Экономия ~42 минуты на одного клиента.</p>
-                    
-                    <div class="bg-slate-800 p-1 rounded-xl border border-slate-700 overflow-hidden">
-                        <table class="w-full text-left text-sm">
-                            <thead class="bg-slate-900/50 text-slate-400 text-xs uppercase">
-                                <tr>
-                                    <th class="px-4 py-3 font-semibold">Поле в CRM</th>
-                                    <th class="px-4 py-3 font-semibold">Что делает бот</th>
-                                    <th class="px-4 py-3 font-semibold text-right">Экономия</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-700/50 text-slate-300">
-                                <tr>
-                                    <td class="px-4 py-3 font-medium text-white">Бюджет & Сроки</td>
-                                    <td class="px-4 py-3">Узнаёт и записывает</td>
-                                    <td class="px-4 py-3 text-right text-green-400 font-medium">-8 мин</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-4 py-3 font-medium text-white">Основные боли</td>
-                                    <td class="px-4 py-3">Формирует в Notes</td>
-                                    <td class="px-4 py-3 text-right text-green-400 font-medium">-10 мин</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-4 py-3 font-medium text-white">Lead Score</td>
-                                    <td class="px-4 py-3">Рассчитывает автоматом</td>
-                                    <td class="px-4 py-3 text-right text-green-400 font-medium">-5 мин</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-4 py-3 font-medium text-white">Следующий шаг</td>
-                                    <td class="px-4 py-3">Бронирует встречу</td>
-                                    <td class="px-4 py-3 text-right text-green-400 font-medium">-3 мин</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="reveal">
+                        <h3 class="rag-block__title"><i class="fa-solid fa-table-list" aria-hidden="true"></i> Авто-CRM</h3>
+                        <p class="text-small" style="color: var(--text-muted); margin: 0 0 var(--space-6); line-height: var(--leading-body);">До ~42 минут экономии на одном лиде за счёт автозаполнения.</p>
+                        <div class="table-wrap">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Поле</th>
+                                        <th>Действие бота</th>
+                                        <th class="num">Минуты</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Бюджет и сроки</strong></td>
+                                        <td>Фиксирует в карточке</td>
+                                        <td class="num">−8</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Боли</strong></td>
+                                        <td>Заметки в CRM</td>
+                                        <td class="num">−10</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Lead Score</strong></td>
+                                        <td>Авторасчёт</td>
+                                        <td class="num">−5</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Следующий шаг</strong></td>
+                                        <td>Слот в календаре</td>
+                                        <td class="num">−3</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 8. СРАВНЕНИЕ (ТАБЛИЦА) -->
-    <section class="py-24 bg-white" id="compare">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12 reveal">
-                <h2 class="text-3xl md:text-4xl font-extrabold mb-5 text-slate-900">Роб Бот vs альтернативы: прямой расчёт</h2>
-                <p class="text-lg text-slate-600">Это не замена менеджеру, это его суперсила.</p>
-            </div>
-            
-            <div class="overflow-x-auto border border-slate-200 rounded-2xl shadow-sm reveal">
-                <table class="w-full text-left text-sm whitespace-nowrap">
-                    <thead class="bg-slate-50 text-slate-600 text-xs uppercase tracking-wider border-b border-slate-200">
-                        <tr>
-                            <th class="px-6 py-4 font-bold">Критерий</th>
-                            <th class="px-6 py-4 font-bold">Нанять менеджера</th>
-                            <th class="px-6 py-4 font-bold">Обычный чат-бот</th>
-                            <th class="px-6 py-4 font-bold bg-brand-50 text-brand-700">Роб Бот</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-100">
-                        <tr class="hover:bg-slate-50 transition">
-                            <td class="px-6 py-4 font-semibold text-slate-800">Стоимость/месяц</td>
-                            <td class="px-6 py-4 text-slate-600">$2,500–3,500</td>
-                            <td class="px-6 py-4 text-slate-600">$300–800</td>
-                            <td class="px-6 py-4 font-bold text-brand-600 bg-brand-50/50">$499</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition">
-                            <td class="px-6 py-4 font-semibold text-slate-800">Качество квалификации</td>
-                            <td class="px-6 py-4 text-slate-600">90%</td>
-                            <td class="px-6 py-4 text-slate-600">70% (медленный)</td>
-                            <td class="px-6 py-4 font-bold text-brand-600 bg-brand-50/50">95%</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition">
-                            <td class="px-6 py-4 font-semibold text-slate-800">Работает 24/7</td>
-                            <td class="px-6 py-4 text-slate-600">❌ Нет (8-10 часов)</td>
-                            <td class="px-6 py-4 text-slate-600">✅ Да</td>
-                            <td class="px-6 py-4 font-bold text-brand-600 bg-brand-50/50">✅ Да</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition">
-                            <td class="px-6 py-4 font-semibold text-slate-800">Знает вашу базу (RAG)</td>
-                            <td class="px-6 py-4 text-slate-600">✅ Постепенно</td>
-                            <td class="px-6 py-4 text-slate-600">⚠️ Очень медленно</td>
-                            <td class="px-6 py-4 font-bold text-brand-600 bg-brand-50/50">✅ Сразу</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition">
-                            <td class="px-6 py-4 font-semibold text-slate-800">Перехватить диалог</td>
-                            <td class="px-6 py-4 text-slate-600">✅ Да</td>
-                            <td class="px-6 py-4 text-slate-600">❌ Нельзя</td>
-                            <td class="px-6 py-4 font-bold text-brand-600 bg-brand-50/50">✅ В 1 клик</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition">
-                            <td class="px-6 py-4 font-semibold text-slate-800">Скорость ответа</td>
-                            <td class="px-6 py-4 text-slate-600">5–15 минут</td>
-                            <td class="px-6 py-4 text-slate-600">2–5 минут</td>
-                            <td class="px-6 py-4 font-bold text-brand-600 bg-brand-50/50">< 30 секунд</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-        <!-- 9. ТАРИФЫ -->
-    <section class="py-24 bg-slate-50" id="pricing">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-                <h2 class="text-3xl md:text-4xl font-extrabold mb-5 text-slate-900">Тариф на любой размер</h2>
-                <p class="text-lg text-slate-600">Плати за результат или за спокойствие — выбирай.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Starter -->
-                <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm flex flex-col reveal">
-                    <h3 class="text-lg font-bold text-slate-900 mb-2">Starter</h3>
-                    <div class="text-3xl font-extrabold mb-1">$299<span class="text-sm text-slate-500 font-normal">/мес</span></div>
-                    <p class="text-xs text-slate-500 mb-6">Для стартапов < 50 лидов/нед</p>
-                    <ul class="space-y-3 mb-8 flex-1 text-sm text-slate-600">
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i>1 Sales Agent (бот)</li>
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i>До 500 лидов/месяц</li>
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i>Базовая CRM интеграция</li>
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i>80% автоматизация</li>
-                    </ul>
-                    <a href="#" class="w-full block text-center bg-white border-2 border-slate-200 hover:border-brand-500 text-slate-700 hover:text-brand-600 font-bold py-3 rounded-xl transition">Пробный период 7 дней</a>
-                </div>
-
-                <!-- Pro -->
-                <div class="bg-white rounded-2xl p-8 border-2 border-brand-500 shadow-xl shadow-brand-500/10 flex flex-col relative transform lg:-translate-y-4 reveal" style="animation-delay: 0.1s">
-                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-500 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">🌟 Популярный</div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2">Pro</h3>
-                    <div class="text-3xl font-extrabold mb-1">$499<span class="text-sm text-slate-500 font-normal">/мес</span></div>
-                    <p class="text-xs text-slate-500 mb-6">Для SaaS с растущим потоком</p>
-                    <ul class="space-y-3 mb-8 flex-1 text-sm text-slate-600">
-                        <li><i class="fa-solid fa-check text-brand-500 mr-2"></i>2-3 Sales Agents</li>
-                        <li><i class="fa-solid fa-check text-brand-500 mr-2"></i>До 2,000 лидов/месяц</li>
-                        <li><i class="fa-solid fa-check text-brand-500 mr-2"></i>Полная CRM интеграция</li>
-                        <li><i class="fa-solid fa-check text-brand-500 mr-2"></i>RAG (до 500 документов)</li>
-                        <li><i class="fa-solid fa-check text-brand-500 mr-2"></i>Human-in-the-Loop</li>
-                    </ul>
-                    <a href="#" class="w-full block text-center bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 rounded-xl transition shadow-md">Запросить демо Pro</a>
-                </div>
-
-                <!-- Enterprise -->
-                <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm flex flex-col reveal" style="animation-delay: 0.2s">
-                    <h3 class="text-lg font-bold text-slate-900 mb-2">Enterprise</h3>
-                    <div class="text-3xl font-extrabold mb-1">Custom</div>
-                    <p class="text-xs text-slate-500 mb-6">Для крупных корпораций</p>
-                    <ul class="space-y-3 mb-8 flex-1 text-sm text-slate-600">
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i>∞ агентов и лидов</li>
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i>Кастомная интеграция</li>
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i>Custom RAG (10K+ док)</li>
-                        <li><i class="fa-solid fa-check text-green-500 mr-2"></i>Dedicated Manager</li>
-                    </ul>
-                    <a href="#" class="w-full block text-center bg-white border-2 border-slate-200 hover:border-slate-800 text-slate-700 font-bold py-3 rounded-xl transition">Поговорить с Sales</a>
-                </div>
-
-                <!-- Performance -->
-                <div class="bg-slate-900 rounded-2xl p-8 border border-slate-700 shadow-sm flex flex-col text-white relative reveal" style="animation-delay: 0.3s">
-                    <div class="absolute top-3 right-3 bg-accent-500 text-white px-2 py-0.5 rounded text-xs font-bold">НОВОЕ</div>
-                    <h3 class="text-lg font-bold text-slate-100 mb-2">Performance</h3>
-                    <div class="text-2xl font-extrabold mb-1">$99<span class="text-sm text-slate-400 font-normal"> + $0.99/лид</span></div>
-                    <p class="text-xs text-slate-400 mb-6">Плати только за результат</p>
-                    <ul class="space-y-3 mb-8 flex-1 text-sm text-slate-300">
-                        <li><i class="fa-solid fa-check text-brand-400 mr-2"></i>Фикс за инфраструктуру</li>
-                        <li><i class="fa-solid fa-check text-brand-400 mr-2"></i>Оплата за лид со score 7+</li>
-                        <li><i class="fa-solid fa-check text-brand-400 mr-2"></i>Меньше риска на старте</li>
-                    </ul>
-                    <a href="#" class="w-full block text-center bg-brand-500 hover:bg-brand-400 text-white font-bold py-3 rounded-xl transition">Попробовать Hybrid</a>
+        <section class="section" id="compare" aria-labelledby="compare-title">
+            <div class="container">
+                <header class="section-head reveal">
+                    <h2 id="compare-title" class="h2">Роб Бот и альтернативы</h2>
+                    <p class="prose">Не замена менеджеру — усиление: скорость, база знаний и перехват в один клик.</p>
+                </header>
+                <div class="compare-wrap reveal">
+                    <table class="compare-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Критерий</th>
+                                <th scope="col">Нанять менеджера</th>
+                                <th scope="col">Обычный чат-бот</th>
+                                <th scope="col" class="highlight">Роб Бот</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Стоимость / мес</td>
+                                <td>$2 500–3 500</td>
+                                <td>$300–800</td>
+                                <td class="highlight">$499</td>
+                            </tr>
+                            <tr>
+                                <td>Квалификация</td>
+                                <td>≈ 90%</td>
+                                <td>≈ 70%, медленно</td>
+                                <td class="highlight">≈ 95%</td>
+                            </tr>
+                            <tr>
+                                <td>24/7</td>
+                                <td>Нет</td>
+                                <td>Да</td>
+                                <td class="highlight">Да</td>
+                            </tr>
+                            <tr>
+                                <td>Ваша база (RAG)</td>
+                                <td>Со временем</td>
+                                <td>Очень ограничено</td>
+                                <td class="highlight">Сразу</td>
+                            </tr>
+                            <tr>
+                                <td>Перехват диалога</td>
+                                <td>Да</td>
+                                <td>Нет</td>
+                                <td class="highlight">Один клик</td>
+                            </tr>
+                            <tr>
+                                <td>Скорость ответа</td>
+                                <td>5–15 мин</td>
+                                <td>2–5 мин</td>
+                                <td class="highlight">&lt; 30 сек</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 10. FAQ & FOOTER CTA -->
-    <section class="py-24 bg-white" id="faq">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-extrabold mb-10 text-center text-slate-900">Ещё вопросы? Вот честные ответы.</h2>
-            
-            <div class="space-y-4">
-                <details class="group bg-slate-50 border border-slate-200 rounded-xl p-5 cursor-pointer reveal">
-                    <summary class="font-bold text-lg flex justify-between items-center">
-                        Какие системы CRM вы поддерживаете?
-                        <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
-                    </summary>
-                    <div class="mt-4 text-slate-600 text-sm leading-relaxed border-t border-slate-200 pt-4">
-                        HubSpot, Bitrix24, AmoCRM, Pipedrive, Salesforce, Zoho, Airtable, и любой другой через REST API / Webhook. Интеграция занимает 2-3 часа.
+        <section class="section section--surface" id="pricing" aria-labelledby="pricing-title">
+            <div class="container">
+                <header class="section-head reveal">
+                    <h2 id="pricing-title" class="h2">Тарифы под масштаб</h2>
+                    <p class="prose">Фикс за продукт или гибрид за результат — без лишних планов в один ряд.</p>
+                </header>
+                <div class="pricing-grid">
+                    <article class="pricing-card pricing-card--featured reveal">
+                        <span class="pricing-card__badge">Популярный</span>
+                        <div>
+                            <h3 class="pricing-card__name">Pro</h3>
+                            <p class="pricing-card__price">$499<span class="text-small" style="font-weight: 500; color: var(--text-faint);"> / мес</span></p>
+                            <p class="pricing-card__note">Растущий поток лидов, полная CRM и RAG.</p>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>2–3 sales-агента</li>
+                                <li>До 2 000 лидов / мес</li>
+                                <li>Полная интеграция CRM</li>
+                                <li>RAG до 500 документов</li>
+                                <li>Human-in-the-loop</li>
+                            </ul>
+                            <a href="#demo" class="btn btn--primary btn--block">Демо Pro</a>
+                        </div>
+                    </article>
+                    <article class="pricing-card pricing-card--starter reveal">
+                        <h3 class="pricing-card__name">Starter</h3>
+                        <p class="pricing-card__price">$299<span class="text-small" style="font-weight: 500; color: var(--text-faint);"> / мес</span></p>
+                        <p class="pricing-card__note">До 50 лидов в неделю.</p>
+                        <ul>
+                            <li>1 агент</li>
+                            <li>До 500 лидов / мес</li>
+                            <li>Базовая CRM</li>
+                            <li>До 80% автоматизации</li>
+                        </ul>
+                        <a href="#" class="btn btn--ghost btn--block">7 дней trial</a>
+                    </article>
+                    <article class="pricing-card pricing-card--enterprise reveal">
+                        <h3 class="pricing-card__name">Enterprise</h3>
+                        <p class="pricing-card__price">Custom</p>
+                        <p class="pricing-card__note">Корпоративные объёмы и безопасность.</p>
+                        <ul>
+                            <li>Без лимита агентов</li>
+                            <li>Кастомные интеграции</li>
+                            <li>RAG 10K+ документов</li>
+                            <li>Dedicated manager</li>
+                        </ul>
+                        <a href="#" class="btn btn--ghost btn--block">Связаться</a>
+                    </article>
+                    <article class="pricing-card pricing-card--performance pricing-card--inverse reveal">
+                        <span class="pricing-card__badge">Новое</span>
+                        <h3 class="pricing-card__name">Performance</h3>
+                        <p class="pricing-card__price">$99 <span class="text-small" style="font-weight: 500; color: var(--text-faint);">+ $0.99 / лид</span></p>
+                        <p class="pricing-card__note">Платите за квалифицированные лиды.</p>
+                        <ul>
+                            <li>Фикс за инфраструктуру</li>
+                            <li>Оплата за лид со score 7+</li>
+                            <li>Ниже риск на старте</li>
+                        </ul>
+                        <a href="#" class="btn btn--primary btn--block">Гибрид</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="faq" aria-labelledby="faq-title">
+            <div class="container">
+                <div class="faq">
+                    <h2 id="faq-title" class="h2 faq__title reveal">Вопросы и ответы</h2>
+                    <div class="faq-list">
+                        <details class="faq-item reveal">
+                            <summary>Какие CRM поддерживаете? <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
+                            <div class="faq-item__body">HubSpot, Bitrix24, amoCRM, Pipedrive, Salesforce, Zoho, Airtable и другие через REST или webhook. Типичная настройка — несколько часов.</div>
+                        </details>
+                        <details class="faq-item reveal">
+                            <summary>Что если бот ошибётся? <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
+                            <div class="faq-item__body">Менеджер видит весь диалог и перехватывает в один клик. При необходимости — откат и ручное продолжение.</div>
+                        </details>
+                        <details class="faq-item reveal">
+                            <summary>Сезонный бизнес? <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
+                            <div class="faq-item__body">Тарифы масштабируются: пик на Pro, спад — Starter или Performance с оплатой за лид.</div>
+                        </details>
                     </div>
-                </details>
-
-                <details class="group bg-slate-50 border border-slate-200 rounded-xl p-5 cursor-pointer reveal" style="animation-delay: 0.1s">
-                    <summary class="font-bold text-lg flex justify-between items-center">
-                        Что если бот ошибётся или обидит клиента?
-                        <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
-                    </summary>
-                    <div class="mt-4 text-slate-600 text-sm leading-relaxed border-t border-slate-200 pt-4">
-                        Менеджер видит ВЕСЬ диалог в реальном времени и может перехватить за 1 клик. Если бот сказал что-то странное — нажимаете "Undo" и плавно забираете управление.
-                    </div>
-                </details>
-
-                <details class="group bg-slate-50 border border-slate-200 rounded-xl p-5 cursor-pointer reveal" style="animation-delay: 0.2s">
-                    <summary class="font-bold text-lg flex justify-between items-center">
-                        А если мой бизнес сезонный?
-                        <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
-                    </summary>
-                    <div class="mt-4 text-slate-600 text-sm leading-relaxed border-t border-slate-200 pt-4">
-                        Роб Бот масштабируется. В летний пик (500 лидов/день) план Pro легко справляется. Зимой вы можете спуститься на Starter или выбрать Performance-Based тариф.
-                    </div>
-                </details>
-            </div>
-
-            <!-- Final CTA -->
-            <div class="mt-20 bg-brand-900 rounded-3xl p-10 text-center text-white relative overflow-hidden shadow-2xl reveal" id="demo">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-brand-600 rounded-full blur-3xl opacity-50"></div>
-                <div class="relative z-10">
-                    <h2 class="text-3xl font-extrabold mb-4">Готовы закрывать лиды 24/7?</h2>
-                    <p class="text-brand-200 mb-8 max-w-lg mx-auto">30 дней полного возврата, если вам не понравится. Настроим за 2 часа.</p>
-                    <a href="#demo" class="inline-block bg-white text-brand-900 hover:bg-slate-100 font-extrabold px-10 py-5 rounded-xl shadow-lg transition transform hover:-translate-y-1 text-lg cta-glow">
-                        🚀 Запросить демо на 15 минут
-                    </a>
-                    <div class="mt-6 text-sm text-brand-300 flex justify-center items-center gap-4">
-                        <span><i class="fa-solid fa-check text-green-400 mr-1"></i> 150+ компаний</span>
-                        <span><i class="fa-solid fa-check text-green-400 mr-1"></i> 4.9 рейтинг G2</span>
+                    <div class="cta-panel reveal" id="demo">
+                        <h2 class="h2">Закрывайте лиды круглосуточно</h2>
+                        <p class="prose">30 дней возврата, если не подойдёт. Первичная настройка — от двух часов.</p>
+                        <a href="#demo" class="btn btn--primary btn--lg">Демо 15 минут</a>
+                        <div class="cta-panel__trust">
+                            <span><i class="fa-solid fa-check" aria-hidden="true"></i>150+ компаний</span>
+                            <span><i class="fa-solid fa-check" aria-hidden="true"></i>4.9 на G2</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-slate-50 border-t border-slate-200 py-12 text-center text-slate-500 text-sm">
-        <div class="max-w-7xl mx-auto px-4">
-            <p class="mb-2">&copy; 2026 Роб Бот Team. Все права защищены.</p>
-            <p>P.S. Early Adopter скидка 15% заканчивается 30 апреля 2026.</p>
+    <footer class="site-footer">
+        <div class="container site-footer__inner">
+            <p>© 2026 Роб Бот. Все права защищены.</p>
+            <p>Early adopter −15% до 30 апреля 2026</p>
         </div>
     </footer>
+
+    <script src="main.js"></script>
 </body>
 </html>
