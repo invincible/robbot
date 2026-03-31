@@ -11,8 +11,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="guide" class="visually-hidden" aria-hidden="true"></div>
-
     <header class="site-header" id="top">
         <div class="container site-header__inner">
             <a href="#top" class="logo">
@@ -43,7 +41,7 @@
                     <p class="lead hero__motion hero__motion--3">Агент ловит лиды вне смены, ведёт диалог в тоне бренда и передаёт менеджеру контекст — с перехватом и правками в один клик.</p>
                     <div class="hero__actions hero__motion hero__motion--4">
                         <a href="#demo" class="btn btn--primary btn--lg">Запросить демо за 15 минут</a>
-                        <a href="#guide" class="btn btn--ghost btn--lg">Скачать гайд (PDF)</a>
+                        <a href="#demo" class="btn btn--ghost btn--lg">Запросить гайд</a>
                     </div>
                     <div class="hero__stats" role="list">
                         <div class="hero__stat" role="listitem">
@@ -102,19 +100,19 @@
                     <article class="pain-card pain-card--lead reveal">
                         <span class="pain-card__icon" aria-hidden="true"><i class="fa-regular fa-moon"></i></span>
                         <h3 class="h3">Лид пишет в 23:00 — и больше не ждёт</h3>
-                        <p class="text-small" style="color: var(--text-muted); line-height: var(--leading-body); margin: 0;">Большая часть B2B-лидов ожидает ответа в первые минуты. Ночью ответ конкурента часто значит потерянную сделку.</p>
+                        <p class="pain-card__desc">Большая часть B2B-лидов ожидает ответа в первые минуты. Ночью ответ конкурента часто значит потерянную сделку.</p>
                         <p class="pain-card__tag">Потеря: $5–50K упущенного дохода</p>
                     </article>
                     <article class="pain-card reveal">
                         <span class="pain-card__icon" aria-hidden="true"><i class="fa-solid fa-hourglass-half"></i></span>
                         <h3 class="h3">Время уходит на квалификацию</h3>
-                        <p class="text-small" style="color: var(--text-muted); line-height: var(--leading-body); margin: 0;">SDR тратят часы на однотипные вопросы. Менеджерам нужно закрывать, а не читать скрипт.</p>
+                        <p class="pain-card__desc">SDR тратят часы на однотипные вопросы. Менеджерам нужно закрывать, а не читать скрипт.</p>
                         <p class="pain-card__tag">+ $80–150K на расширение штата</p>
                     </article>
                     <article class="pain-card reveal">
                         <span class="pain-card__icon" aria-hidden="true"><i class="fa-solid fa-filter-circle-xmark"></i></span>
                         <h3 class="h3">Бюджет на лиды без квалификации</h3>
-                        <p class="text-small" style="color: var(--text-muted); line-height: var(--leading-body); margin: 0;">До 40% лидов отваливается на этапе квалификации — маркетинг работает вхолостую.</p>
+                        <p class="pain-card__desc">До 40% лидов отваливается на этапе квалификации — маркетинг работает вхолостую.</p>
                         <p class="pain-card__tag">~40% маркетингового бюджета</p>
                     </article>
                 </div>
@@ -124,7 +122,7 @@
         <section class="section section--tight section--surface-2" id="roi" aria-labelledby="roi-title">
             <div class="container">
                 <div class="roi__top">
-                    <h2 id="roi-title" class="h2 reveal" style="margin: 0; max-width: 20ch;">150+ компаний снижают стоимость лида до 70%</h2>
+                    <h2 id="roi-title" class="h2 roi__heading reveal">150+ компаний снижают стоимость лида до 70%</h2>
                     <div class="roi__logos reveal" aria-hidden="true">
                         <span class="roi__logo">ACME Corp</span>
                         <span class="roi__logo">TechFlow</span>
@@ -172,7 +170,7 @@
                 <div class="reveal">
                     <p class="eyebrow">Контроль</p>
                     <h2 id="hitl-title" class="h2">Помощник с полным контролем, а не чёрный ящик</h2>
-                    <p class="lead" style="max-width: 42ch;">Менеджер видит диалог, может перехватить или подправить поведение бота без остановки разговора.</p>
+                    <p class="lead lead--wide">Менеджер видит диалог, может перехватить или подправить поведение бота без остановки разговора.</p>
                     <ul class="feature-list">
                         <li>
                             <span class="feature-list__marker" aria-hidden="true"><i class="fa-solid fa-hand"></i></span>
@@ -207,7 +205,7 @@
                         </div>
                         <div class="diagram__node diagram__node--accent">
                             <strong><i class="fa-solid fa-robot" aria-hidden="true"></i> Роб Бот</strong><br>
-                            <span class="text-small" style="margin-top: var(--space-2); display: inline-block;">Первичный диалог</span>
+                            <span class="text-small diagram__node-subtitle">Первичный диалог</span>
                         </div>
                         <span class="diagram__arrow" aria-hidden="true"><i class="fa-solid fa-arrow-down-long"></i></span>
                         <div class="diagram__node"><i class="fa-solid fa-user" aria-hidden="true"></i> Клиент</div>
@@ -226,7 +224,7 @@
                 <div class="rag-grid">
                     <div class="reveal">
                         <h3 class="rag-block__title"><i class="fa-solid fa-database" aria-hidden="true"></i> База знаний (RAG)</h3>
-                        <p class="text-small" style="color: var(--text-muted); margin: 0 0 var(--space-6); line-height: var(--leading-body);">Прайсы, FAQ, регламенты и контекст сделок — в ответах бота.</p>
+                        <p class="rag-block__desc">Прайсы, FAQ, регламенты и контекст сделок — в ответах бота.</p>
                         <div class="example-box">
                             <p class="example-box__label">Остатки на складе</p>
                             <p class="example-line"><strong>Клиент:</strong> Widget-X, 1000 шт к пятнице.</p>
@@ -236,7 +234,7 @@
                     </div>
                     <div class="reveal">
                         <h3 class="rag-block__title"><i class="fa-solid fa-table-list" aria-hidden="true"></i> Авто-CRM</h3>
-                        <p class="text-small" style="color: var(--text-muted); margin: 0 0 var(--space-6); line-height: var(--leading-body);">До ~42 минут экономии на одном лиде за счёт автозаполнения.</p>
+                        <p class="rag-block__desc">До ~42 минут экономии на одном лиде за счёт автозаполнения.</p>
                         <div class="table-wrap">
                             <table class="table">
                                 <thead>
@@ -345,7 +343,7 @@
                         <span class="pricing-card__badge">Популярный</span>
                         <div>
                             <h3 class="pricing-card__name">Pro</h3>
-                            <p class="pricing-card__price">$499<span class="text-small" style="font-weight: 500; color: var(--text-faint);"> / мес</span></p>
+                            <p class="pricing-card__price">$499<span class="text-small pricing-period"> / мес</span></p>
                             <p class="pricing-card__note">Растущий поток лидов, полная CRM и RAG.</p>
                         </div>
                         <div>
@@ -361,7 +359,7 @@
                     </article>
                     <article class="pricing-card pricing-card--starter reveal">
                         <h3 class="pricing-card__name">Starter</h3>
-                        <p class="pricing-card__price">$299<span class="text-small" style="font-weight: 500; color: var(--text-faint);"> / мес</span></p>
+                        <p class="pricing-card__price">$299<span class="text-small pricing-period"> / мес</span></p>
                         <p class="pricing-card__note">До 50 лидов в неделю.</p>
                         <ul>
                             <li>1 агент</li>
@@ -386,7 +384,7 @@
                     <article class="pricing-card pricing-card--performance pricing-card--inverse reveal">
                         <span class="pricing-card__badge">Новое</span>
                         <h3 class="pricing-card__name">Performance</h3>
-                        <p class="pricing-card__price">$99 <span class="text-small" style="font-weight: 500; color: var(--text-faint);">+ $0.99 / лид</span></p>
+                        <p class="pricing-card__price">$99 <span class="text-small pricing-period">+ $0.99 / лид</span></p>
                         <p class="pricing-card__note">Платите за квалифицированные лиды.</p>
                         <ul>
                             <li>Фикс за инфраструктуру</li>

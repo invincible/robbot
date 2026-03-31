@@ -64,9 +64,7 @@
 
   /* Motion */
   --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-out: var(--ease-premium);
   --duration-ui: 180ms;
-  --duration-fast: var(--duration-ui);
   --duration-reveal: 600ms;
   --header-blur: 14px;
 }
@@ -165,7 +163,7 @@ button {
 
 .display {
   font-size: var(--text-display);
-  font-weight: 700;
+  font-weight: 800;
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
   margin: 0 0 var(--space-6);
@@ -173,6 +171,7 @@ button {
 
 .display__accent {
   color: var(--accent);
+  font-weight: 800;
 }
 
 .h2 {
@@ -206,6 +205,10 @@ button {
   line-height: var(--leading-body);
   margin: 0 0 var(--space-8);
   max-width: 40ch;
+}
+
+.lead--wide {
+  max-width: 42ch;
 }
 
 .text-small {
@@ -589,14 +592,6 @@ button {
   }
 }
 
-.display {
-  font-weight: 800;
-}
-
-.display__accent {
-  font-weight: 800;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   /* Badge, headline, lead, CTA: opacity + clip-path only (no translateY) */
   .hero__motion {
@@ -715,10 +710,6 @@ button {
   }
 }
 
-.btn--lg.btn--primary {
-  font-weight: 700;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .hero__motion,
   .hero__stat,
@@ -737,8 +728,6 @@ button {
 /* =============================================================================
    Hero
    ============================================================================= */
-
-
 
 .hero__grid {
   display: grid;
@@ -1139,6 +1128,13 @@ button {
     color var(--duration-ui) var(--ease-premium);
 }
 
+.pain-card__desc {
+  font-size: var(--text-small);
+  color: var(--text-muted);
+  line-height: var(--leading-body);
+  margin: 0;
+}
+
 .pain-card__tag {
   margin-top: auto;
   font-size: var(--text-small);
@@ -1170,6 +1166,11 @@ button {
   }
 }
 
+.roi__heading {
+  margin: 0;
+  max-width: 20ch;
+}
+
 .roi__logos {
   display: flex;
   flex-wrap: wrap;
@@ -1182,7 +1183,7 @@ button {
   font-weight: 700;
   color: var(--text-faint);
   letter-spacing: var(--tracking-tight);
-  transition: color var(--duration-fast) var(--ease-out);
+  transition: color var(--duration-ui) var(--ease-premium);
 }
 
 .roi__logo:hover {
@@ -1490,6 +1491,11 @@ button {
   font-size: 0.875rem;
 }
 
+.diagram__node-subtitle {
+  display: inline-block;
+  margin-top: var(--space-2);
+}
+
 /* =============================================================================
    RAG section (dark inner)
    ============================================================================= */
@@ -1528,6 +1534,13 @@ button {
 
 .rag-block__title i {
   color: var(--accent);
+}
+
+.rag-block__desc {
+  font-size: var(--text-small);
+  color: var(--text-muted);
+  margin: 0 0 var(--space-6);
+  line-height: var(--leading-body);
 }
 
 .example-box {
@@ -1830,6 +1843,11 @@ button {
   margin-bottom: var(--space-6);
 }
 
+.pricing-period {
+  font-weight: 500;
+  color: var(--text-faint);
+}
+
 .pricing-card ul {
   list-style: none;
   margin: 0 0 var(--space-6);
@@ -1890,7 +1908,7 @@ details.faq-item {
   border-radius: var(--radius-lg);
   background: var(--surface);
   overflow: hidden;
-  transition: border-color var(--duration-fast) var(--ease-out);
+  transition: border-color var(--duration-ui) var(--ease-premium);
 }
 
 details.faq-item:hover {
@@ -1929,12 +1947,11 @@ details.faq-item[open] summary i {
 }
 
 .faq-item__body {
-  padding: 0 var(--space-5) var(--space-5);
+  padding: var(--space-4) var(--space-5) var(--space-5);
   font-size: var(--text-small);
   color: var(--text-muted);
   line-height: var(--leading-body);
   border-top: 1px solid var(--border);
-  padding-top: var(--space-4);
   margin-top: 0;
 }
 
