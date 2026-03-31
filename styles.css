@@ -18,6 +18,12 @@
   --accent-muted: rgba(94, 234, 212, 0.14);
   --accent-on-accent: #0b1020;
   --accent-glow: rgba(94, 234, 212, 0.22);
+  --red: #ef4444;
+  --red-hover: #dc2626;
+  --red-muted: rgba(239, 68, 68, 0.12);
+  --red-glow: rgba(239, 68, 68, 0.2);
+  --success: #10b981;
+  --success-muted: rgba(16, 185, 129, 0.12);
 
   /* Typography */
   --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
@@ -263,12 +269,28 @@ button {
   background: var(--accent);
   color: var(--accent-on-accent);
   box-shadow: var(--shadow-soft), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  position: relative;
+}
+
+.btn--primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity var(--duration-ui) var(--ease-premium);
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .btn--primary:hover {
   background: var(--accent-hover);
   transform: translateY(-1px);
   box-shadow: var(--shadow-soft), 0 0 24px -8px var(--accent-glow);
+}
+
+.btn--primary:hover::after {
+  opacity: 1;
 }
 
 .btn--primary:active {
@@ -288,6 +310,38 @@ button {
 }
 
 .btn--ghost:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn--red {
+  background: var(--red);
+  color: white;
+  box-shadow: var(--shadow-soft), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  position: relative;
+}
+
+.btn--red::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity var(--duration-ui) var(--ease-premium);
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.btn--red:hover {
+  background: var(--red-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-soft), 0 0 24px -8px var(--red-glow);
+}
+
+.btn--red:hover::after {
+  opacity: 1;
+}
+
+.btn--red:active {
   transform: translateY(0) scale(0.98);
 }
 
@@ -560,6 +614,11 @@ button {
     ellipse 90% 55% at 18% -8%,
     rgba(94, 234, 212, 0.055) 0%,
     transparent 58%
+  ),
+  radial-gradient(
+    circle 800px at 80% 20%,
+    rgba(94, 234, 212, 0.03) 0%,
+    transparent 50%
   );
   pointer-events: none;
 }
@@ -772,10 +831,17 @@ button {
   letter-spacing: var(--tracking-tight);
   color: var(--text);
   line-height: 1.2;
+  background: linear-gradient(135deg, var(--text) 0%, var(--text-muted) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .stat__value--accent {
-  color: var(--accent);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .stat__label {
@@ -907,6 +973,25 @@ button {
 .mock__btn:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
+}
+
+.mock__btn--intercept {
+  border-color: var(--red);
+  color: var(--red);
+  background: rgba(239, 68, 68, 0.08);
+  font-weight: 700;
+}
+
+.mock__btn--intercept:hover {
+  border-color: var(--red);
+  color: white;
+  background: var(--red);
+  transform: translateY(-1px);
+  box-shadow: 0 0 24px -8px var(--red-glow);
+}
+
+.mock__btn--intercept:active {
+  transform: translateY(0) scale(0.98);
 }
 
 .mock__thread {
@@ -1139,11 +1224,105 @@ button {
   margin-top: auto;
   font-size: var(--text-small);
   font-weight: 600;
-  color: var(--text-muted);
+  color: var(--red);
   padding: var(--space-3);
   border-radius: var(--radius-md);
+  border: 1px solid var(--red);
+  background: var(--red-muted);
+}
+
+/* =============================================================================
+   Economics cards
+   ============================================================================= */
+
+.economics-grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .economics-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+}
+
+.economics-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
   border: 1px solid var(--border);
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--surface);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  transition: border-color var(--duration-ui) var(--ease-premium),
+    box-shadow var(--duration-ui) var(--ease-premium);
+}
+
+.economics-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    118deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.055) 50%,
+    transparent 60%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-ui) var(--ease-premium);
+}
+
+.economics-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (hover: hover) {
+  .economics-card:hover {
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-card);
+  }
+
+  .economics-card:hover::after {
+    opacity: 1;
+  }
+}
+
+.economics-card__icon {
+  color: var(--accent);
+  font-size: 2rem;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--accent-muted);
+}
+
+.economics-card h3 {
+  margin: 0;
+}
+
+.economics-card__metric {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: var(--tracking-tight);
+  color: var(--text);
+}
+
+.economics-card__desc {
+  margin: 0;
+  font-size: var(--text-small);
+  color: var(--text-muted);
+  line-height: var(--leading-body);
 }
 
 /* =============================================================================
@@ -1758,7 +1937,14 @@ button {
 
 .pricing-card--featured {
   border-color: rgba(94, 234, 212, 0.35);
-  box-shadow: 0 0 0 1px rgba(94, 234, 212, 0.12);
+  box-shadow: 0 0 0 1px rgba(94, 234, 212, 0.12), 0 0 32px -8px rgba(94, 234, 212, 0.16);
+}
+
+@media (hover: hover) {
+  .pricing-card--featured:hover {
+    border-color: rgba(94, 234, 212, 0.5);
+    box-shadow: 0 0 0 1px rgba(94, 234, 212, 0.25), 0 0 40px -6px rgba(94, 234, 212, 0.24);
+  }
 }
 
 .pricing-card:has(.pricing-card__badge) {
@@ -1836,11 +2022,27 @@ button {
 }
 
 .pricing-card--inverse {
-  background: var(--surface-2);
+  background: linear-gradient(135deg, var(--red-muted) 0%, transparent 100%), var(--surface-2);
+  border-color: var(--red);
+}
+
+.pricing-card--inverse .pricing-card__name,
+.pricing-card--inverse .pricing-card__price {
+  color: var(--red);
 }
 
 .pricing-card--inverse .pricing-card__note {
   color: var(--text-muted);
+}
+
+.pricing-card--inverse .btn--primary {
+  background: var(--red);
+  color: white;
+}
+
+.pricing-card--inverse .btn--primary:hover {
+  background: var(--red-hover);
+  box-shadow: var(--shadow-soft), 0 0 24px -8px var(--red-glow);
 }
 
 /* =============================================================================
@@ -1924,8 +2126,31 @@ details.faq-item[open] summary i {
   padding: clamp(var(--space-8), 6vw, var(--space-12));
   border-radius: var(--radius-xl);
   border: 1px solid var(--border);
-  background: var(--surface-2);
+  background: linear-gradient(135deg,
+    rgba(94, 234, 212, 0.05) 0%,
+    transparent 50%),
+    var(--surface-2);
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(94, 234, 212, 0.3) 50%,
+    transparent 100%);
+}
+
+.cta-panel > * {
+  position: relative;
+  z-index: 1;
 }
 
 .cta-panel .h2 {
