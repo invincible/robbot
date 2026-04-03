@@ -1,0 +1,150 @@
+---
+import landingAfterHero from '../content/landing-after-hero.html?raw';
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Роб Бот — AI-агент отдела продаж 24/7</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div id="guide" class="visually-hidden" aria-hidden="true"></div>
+
+    <header class="site-header" id="top">
+      <div class="container site-header__inner">
+        <a href="#top" class="logo">
+          <span class="logo__mark" aria-hidden="true"><i class="fa-solid fa-robot"></i></span>
+          Роб Бот
+        </a>
+        <button
+          type="button"
+          class="site-header__toggle"
+          id="nav-toggle"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          aria-label="Открыть меню"
+        >
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+        <nav id="site-nav" class="site-header__nav" aria-label="Основная навигация">
+          <a href="#how">Как работает</a>
+          <a href="#hitl">Контроль</a>
+          <a href="#rag">Умная база</a>
+          <a href="#economics">Экономия</a>
+          <a href="#pricing">Тарифы</a>
+          <a
+            href="https://calendly.com/robbot/demo"
+            class="btn btn--primary site-header__cta site-header__cta--mobile"
+            >Запросить демо</a
+          >
+        </nav>
+        <a href="https://calendly.com/robbot/demo" class="btn btn--primary site-header__cta">Запросить демо</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero section" aria-labelledby="hero-title">
+        <div class="container hero__grid">
+          <div class="hero__intro">
+            <p class="hero__kicker hero__motion hero__motion--1"><span>AI sales</span> · Отдел продаж 24/7</p>
+            <h1 id="hero-title" class="display hero__motion hero__motion--2">
+              Бот, который продаёт круглосуточно —
+              <span class="display__accent">пока команда отдыхает</span>
+            </h1>
+            <p class="lead hero__motion hero__motion--3">
+              Агент ловит лиды вне смены, ведёт диалог в тоне бренда и передаёт менеджеру контекст — с
+              перехватом и правками в один клик.
+            </p>
+            <div class="hero__actions hero__motion hero__motion--4">
+              <a href="https://calendly.com/robbot/demo" class="btn btn--primary btn--lg">Запросить демо за 15 минут</a>
+              <a href="#guide" class="btn btn--ghost btn--lg"
+                ><i class="fa-solid fa-download" aria-hidden="true"></i> Скачать гайд</a
+              >
+            </div>
+            <div class="hero__stats" role="list">
+              <div class="hero__stat" role="listitem">
+                <div class="stat__value">
+                  <span class="stat__count" data-count-target="70" data-prefix="−" data-suffix="%">−70%</span>
+                </div>
+                <div class="stat__label">Cost per lead</div>
+              </div>
+              <div class="hero__stat" role="listitem">
+                <div class="stat__value">24/7</div>
+                <div class="stat__label">Без выходных</div>
+              </div>
+              <div class="hero__stat" role="listitem">
+                <div class="stat__value stat__value--accent">2–3 дня</div>
+                <div class="stat__label">До первого ROI</div>
+              </div>
+            </div>
+          </div>
+          <div class="mock-wrap" data-mock-spotlight>
+            <div class="mock mock--hero hero__motion--mock" aria-label="Пример интерфейса диалога">
+              <div class="mock__bar">
+                <div class="mock__user">
+                  <div class="mock__avatar"><i class="fa-solid fa-robot" aria-hidden="true"></i></div>
+                  <div>
+                    <div class="mock__name">Роб Бот</div>
+                    <div class="mock__status"><span class="status-dot" aria-hidden="true"></span> Анализирует лид</div>
+                  </div>
+                </div>
+                <button type="button" class="mock__btn">Перехватить</button>
+              </div>
+              <div class="mock__thread">
+                <div class="bubble">
+                  <div class="bubble__avatar" aria-hidden="true">К</div>
+                  <div class="bubble__text">Нужна система на 50+ человек. Условия и сроки внедрения?</div>
+                </div>
+                <div class="bubble bubble--out">
+                  <div class="bubble__avatar bubble__avatar--bot"><i class="fa-solid fa-robot" aria-hidden="true"></i></div>
+                  <div class="bubble__text">
+                    Для 50+ подойдёт Enterprise. Внедрение 2–3 дня. При оплате за год — скидка 20%. Забронировать звонок
+                    с техдиректором на завтра?
+                  </div>
+                </div>
+                <div class="bubble bubble--out">
+                  <div class="bubble__avatar bubble__avatar--bot"><i class="fa-solid fa-robot" aria-hidden="true"></i></div>
+                  <div class="bubble__text typing" aria-label="Печатает"><span></span><span></span><span></span></div>
+                </div>
+                <p class="mock__crm"><i class="fa-solid fa-database" aria-hidden="true"></i> CRM: бюджет зафиксирован, Lead
+                  Score 9/10</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Fragment set:html={landingAfterHero} />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <div>
+          <p style="margin-bottom: 0.5rem">© 2026 Роб Бот. Все права защищены.</p>
+          <p style="font-size: 0.8rem; color: var(--text-faint); margin: 0">
+            Early adopter −15% до 30 апреля 2026 ·
+            <a href="#" style="color: var(--text-faint); text-decoration: underline">Privacy Policy</a> ·
+            <a href="#" style="color: var(--text-faint); text-decoration: underline">Terms of Service</a>
+          </p>
+        </div>
+        <p style="margin: 0; font-size: 0.8rem; color: var(--text-faint)">30 дней возврата денег. Поддержка по Slack/Email</p>
+      </div>
+    </footer>
+
+    <script src="/main.js" is:inline></script>
+  </body>
+</html>
+

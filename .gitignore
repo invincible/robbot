@@ -1,2 +1,24 @@
 node_modules/
 .env
+
+# Astro / build
+dist/
+.astro/
+
+# Caches
+.cache/
+.npm-cache/
+.pnpm-store/
+.yarn/
+.pnp.*
+.turbo/
+.vercel/
+
+# Local tooling
+.DS_Store
+
+# Scratch from failed scaffolds
+spiffy-sphere/
+
+# Backups
+*old.html
