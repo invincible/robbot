@@ -795,11 +795,9 @@ button {
   border-radius: inherit;
   pointer-events: none;
   z-index: 2;
-  background: radial-gradient(
-    circle 140px at var(--spot-x) var(--spot-y),
-    rgba(94, 234, 212, 0.075) 0%,
-    transparent 72%
-  );
+  background:
+    radial-gradient(circle 140px at var(--spot-x) var(--spot-y), rgba(139, 92, 246, 0.12) 0%, transparent 72%),
+    radial-gradient(circle 200px at calc(var(--spot-x) + 14%) calc(var(--spot-y) + 10%), rgba(34, 211, 238, 0.08) 0%, transparent 70%);
   opacity: 0;
   transition: opacity var(--duration-ui) var(--ease-premium);
 }
@@ -812,7 +810,7 @@ button {
   .mock-wrap {
     justify-self: end;
     width: 100%;
-    max-width: 28rem;
+    max-width: 34rem;
   }
 }
 
@@ -865,7 +863,7 @@ button {
 
 @media (min-width: 1024px) {
   .hero__grid {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 26rem);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 34rem);
     gap: var(--space-16);
     align-items: center;
   }
@@ -1205,13 +1203,12 @@ button {
 
 @media (min-width: 900px) {
   .pains__grid {
-    grid-template-columns: 1.4fr 1fr;
-    grid-template-rows: auto auto;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--space-5);
   }
 
   .pain-card--lead {
-    grid-row: span 2;
+    grid-row: auto;
   }
 }
 
@@ -1263,8 +1260,8 @@ button {
 }
 
 .pain-card:hover .pain-card__icon {
-  border-color: rgba(94, 234, 212, 0.28);
-  color: var(--accent);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--accent-2);
 }
 
 .pain-card__icon {
@@ -1290,7 +1287,7 @@ button {
 }
 
 .pain-card__tag {
-  margin-top: auto;
+  margin-top: var(--space-2);
   font-size: var(--text-small);
   font-weight: 600;
   color: var(--red);
@@ -1401,41 +1398,72 @@ button {
 .roi__top {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: var(--space-6);
   margin-bottom: var(--space-8);
 }
 
 @media (min-width: 768px) {
   .roi__top {
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: var(--space-8);
   }
 }
 
 .roi__heading {
   margin: 0;
-  max-width: 20ch;
+  max-width: 32ch;
 }
 
 .roi__logos {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: var(--space-6) var(--space-10);
 }
 
 .roi__logo {
-  font-size: 0.9375rem;
-  font-weight: 700;
+  font-size: 1.05rem;
+  font-weight: 800;
   color: var(--text-faint);
-  letter-spacing: var(--tracking-tight);
-  transition: color var(--duration-ui) var(--ease-premium);
+  letter-spacing: -0.02em;
+  transition: color var(--duration-ui) var(--ease-premium), opacity var(--duration-ui) var(--ease-premium);
+  opacity: 0.95;
 }
 
 .roi__logo:hover {
   color: var(--text-muted);
+  opacity: 1;
+}
+
+/* Brand-ish wordmarks (no images, just type styling) */
+.roi__logo--acme {
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.roi__logo--techflow {
+  font-weight: 700;
+}
+
+.roi__logo--saasify {
+  font-style: italic;
+  letter-spacing: -0.01em;
+}
+
+.roi__logo--globalit {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+}
+
+.roi__logo--finstart {
+  letter-spacing: -0.01em;
+  font-weight: 800;
 }
 
 .roi__metrics {
@@ -1448,7 +1476,7 @@ button {
 }
 
 .roi__metrics i {
-  color: var(--accent);
+  color: var(--accent-2);
   margin-right: var(--space-2);
   opacity: 0.85;
 }
